@@ -5,6 +5,8 @@ import com.Api.Crud_1.model.Coche;
 import com.Api.Crud_1.model.Motocicleta;
 import com.Api.Crud_1.model.Vehiculo;
 import com.Api.Crud_1.service.VehiculoService;
+import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -54,13 +56,13 @@ public class VehiculoController {
 
     // POST /vehiculos
     @PostMapping("/coches")
-    public ResponseEntity<Vehiculo> createCoche(@RequestBody Coche coche) {
+    public ResponseEntity<Vehiculo> createCoche(@Valid @RequestBody Coche coche) {
         return ResponseEntity.ok(vehiculoService.save(coche));
     }
 
     // POST /vehiculos
     @PostMapping("/motos")
-    public ResponseEntity<Vehiculo> createMotos(@RequestBody Motocicleta moto) {
+    public ResponseEntity<Vehiculo> createMotos(@Valid @RequestBody Motocicleta moto) {
         return ResponseEntity.ok(vehiculoService.save(moto));
     }
     //UPDATE /vehiculos/{id}
